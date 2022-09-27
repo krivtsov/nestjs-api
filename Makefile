@@ -25,7 +25,7 @@ prod:
 lint:
 	npm run lint
 
-test:
+test_unit:
 	npm run test
 
 test_watch:
