@@ -1,3 +1,6 @@
+i:
+	npm i
+
 prebuild:
 	npm runprebuild
 
