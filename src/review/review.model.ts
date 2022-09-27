@@ -1,24 +1,23 @@
-import { Schema, SchemaFactory } from '@nestjs/mongoose';
-import { prop } from '@typegoose/typegoose';
+import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { TimeStamps, Base } from '@typegoose/typegoose/lib/defaultClasses';
 import { Types } from 'mongoose';
 
 export interface ReviewModel extends Base {}
 @Schema()
 export class ReviewModel extends TimeStamps {
-  @prop()
+  @Prop({ required: true })
   name: string;
 
-  @prop()
+  @Prop()
   title: string;
 
-  @prop()
+  @Prop()
   description: string;
 
-  @prop()
+  @Prop()
   rating: number;
 
-  @prop()
+  @Prop()
   productId: Types.ObjectId;
 }
 
