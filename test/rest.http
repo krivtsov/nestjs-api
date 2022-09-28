@@ -1,0 +1,3 @@
+GET http://localhost:3000/review/byProduct/6333311d4c28842a01dc0883 HTTP/1.1
+content-type: application/json
+
