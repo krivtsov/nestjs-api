@@ -1,3 +1,11 @@
 GET http://localhost:3000/review/byProduct/6333311d4c28842a01dc0883 HTTP/1.1
 content-type: application/json
 
+###
+POST http://localhost:3000/auth/register
+content-type: application/json
+
+{
+    "login": "a1@email.com",
+    "password": "123"
+}
