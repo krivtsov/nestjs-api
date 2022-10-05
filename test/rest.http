@@ -1,5 +1,6 @@
 GET http://localhost:3000/review/byProduct/6333311d4c28842a01dc0883 HTTP/1.1
 content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImExMkBlbWFpbC5jb20iLCJpYXQiOjE2NjQ5NjE5NzN9.hiRX_siiYpvlR6mj4fGEbq1MgCTb8O9X9tEIEcRjDrY
 
 ###
 POST http://localhost:3000/auth/register
