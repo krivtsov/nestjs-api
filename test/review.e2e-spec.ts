@@ -53,14 +53,14 @@ describe('AppController (e2e)', () => {
       });
   });
 
-  it('/review/create (POST) - fail', async (done) => {
+  it('/review/create (POST) - fail', () => {
     return request(app.getHttpServer())
       .post('/review/create')
       .send({ ...testDto, rating: 6 })
-      .expect(400)
-      .then(({ body }: request.Response) => {
-        console.log('body :>> ', body);
-        done();
+      .expect(400, {
+        statusCode: 400,
+        message: ['Message Error - max 5'],
+        error: 'Bad Request',
       });
   });
 
