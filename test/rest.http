@@ -1,7 +1,23 @@
+# Review
+###
 GET http://localhost:3000/review/byProduct/6333311d4c28842a01dc0883 HTTP/1.1
 content-type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImExMkBlbWFpbC5jb20iLCJpYXQiOjE2NjQ5NjE5NzN9.hiRX_siiYpvlR6mj4fGEbq1MgCTb8O9X9tEIEcRjDrY
 
+## create
+###
+POST http://localhost:3000/review/create
+content-type: application/json
+
+{
+    "name": "!!!!!qweqweqwe222text",
+    "title": "qweqweqwe222title review",
+    "description": "qeqweqwe222Desc review",
+    "rating": 5,
+    "productId": "634272f444218b36fe54d7b6"
+}
+
+# Auth
 ###
 POST http://localhost:3000/auth/register
 content-type: application/json
@@ -20,3 +36,65 @@ content-type: application/json
     "password": "123"
 }
 
+# Product
+## Create Product
+###
+POST http://localhost:3000/product/create
+content-type: application/json
+
+{
+  "image": "1.png",
+
+  "title": "!!!!First Product",
+
+  "price": 102,
+
+  "oldPrice": 201,
+
+  "credit": 10,
+
+  "description": "Desc Product",
+
+  "advantages": "advantage Product",
+
+  "disAdvantages": "disAdvantag Product",
+
+  "categories": [ "cat4", "cat2" ],
+
+  "tags": ["tag1", "tag2"],
+
+  "characteristics": [
+    {
+        "name": "Char1",
+        "value": "12"
+    },
+    {
+        "name": "Char2",
+        "value": "21"
+    }
+  ]
+}
+
+## Update Product
+###
+PATCH http://localhost:3000/product/6341d61c6cf0243cbca3c4e3
+content-type: application/json
+
+{
+  "image": "4.png"
+}
+
+## Delete Product
+###
+DELETE http://localhost:3000/product/6341aa998a86985d5b102ee3
+content-type: application/json
+
+## Find Product
+###
+POST http://localhost:3000/product/find
+content-type: application/json
+
+{
+    "category" : "cat4",
+    "limit": 10
+}
