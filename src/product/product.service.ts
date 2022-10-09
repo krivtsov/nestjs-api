@@ -4,6 +4,7 @@ import { ProductModel } from './product.model';
 import { ModelType } from '@typegoose/typegoose/lib/types';
 import { CreateProductDto } from './dto/create-product.dto';
 import { FindProductDto } from './dto/find-product.dto';
+import { ReviewModel } from 'src/review/review.model';
 
 @Injectable()
 export class ProductService {
@@ -29,6 +30,41 @@ export class ProductService {
   }
 
   async findWithReviews(dto: FindProductDto) {
-    return this.productModel.aggregate([]); 
+    return this.productModel
+      .aggregate([
+        {
+          $match: {
+            categories: dto.category,
+          },
+        },
+        {
+          $sort: {
+            _id: 1,
+          },
+        },
+        {
+          $limit: dto.limit,
+        },
+        {
+          $lookup: {
+            from: 'Review',
+            localField: '_id',
+            foreignField: 'productId',
+            as: 'reviewss',
+          },
+        },
+        {
+          $addFields: {
+            reviewss: '$reviewss',
+            reviewCount: { $size: '$reviewss' },
+            reviewAvg: { $avg: '$reviewss.rating' },
+          },
+        },
+      ])
+      .exec() as unknown as (ProductModel & {
+      review: ReviewModel[];
+      reviewCount: number;
+      reviewAvg: number;
+    })[];
   }
 }
