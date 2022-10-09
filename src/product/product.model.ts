@@ -1,52 +1,51 @@
-import { Schema, SchemaFactory } from '@nestjs/mongoose';
-import { prop } from '@typegoose/typegoose';
+import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { TimeStamps, Base } from '@typegoose/typegoose/lib/defaultClasses';
 
 class ProductCharacteristic {
-  @prop()
+  @Prop()
   name: string;
 
-  @prop()
+  @Prop()
   value: string;
 }
 
 export interface ProductModel extends Base {}
 @Schema()
 export class ProductModel extends TimeStamps {
-  @prop()
+  @Prop()
   image: string;
 
-  @prop()
+  @Prop()
   title: string;
 
-  @prop()
+  @Prop()
   price: number;
 
-  @prop()
+  @Prop()
   oldPrice?: number;
 
-  @prop()
+  @Prop()
   credit: number;
 
-  // @prop()
+  // @Prop()
   // calculatedRating: number;
 
-  @prop()
-  description: number;
+  @Prop()
+  description: string;
 
-  @prop()
+  @Prop()
   advantages: string;
 
-  @prop()
+  @Prop()
   disAdvantages: string;
 
-  @prop({ type: () => [String] })
+  @Prop({ type: () => [String] })
   categories: string[];
 
-  @prop({ type: () => [String] })
+  @Prop({ type: () => [String] })
   tags: string[];
 
-  @prop({ type: () => [ProductCharacteristic], _id: false })
+  @Prop({ type: () => [ProductCharacteristic], _id: false })
   characteristics: ProductCharacteristic[];
 }
 
